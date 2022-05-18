@@ -55,16 +55,6 @@ public class MigrateInfoResp {
     private Byte batchState;
 
     /**
-     * 锁定
-     */
-    private boolean locked;
-
-    /**
-     * 锁定时间
-     */
-    private Long lockTime;
-
-    /**
      * 失败原因
      */
     private String errorMessage;

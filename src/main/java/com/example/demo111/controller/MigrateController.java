@@ -24,7 +24,7 @@ public class MigrateController {
         return migrateService.migrate(req.getSourceDataSource(), req.getTargetDataSource(), req.getSize());
     }
 
-    @GetMapping(value = "/info/{batchNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/info/{batchNo}")
     public MigrateInfoResp migrate(@PathVariable("batchNo") String batchNo) {
         return migrateService.getByBatchNo(batchNo);
     }

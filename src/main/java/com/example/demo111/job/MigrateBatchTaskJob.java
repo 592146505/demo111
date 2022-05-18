@@ -30,7 +30,7 @@ public class MigrateBatchTaskJob {
 
     private final MigrateBatchTaskService migrateBatchTaskService;
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "0/30 * * * * ?")
     public void execute() {
         MigrateBatchTask task = migrateBatchTaskService.getActiveMigrateBatchTask();
         if (Objects.isNull(task)) {
