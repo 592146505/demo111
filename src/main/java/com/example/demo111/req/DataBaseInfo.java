@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.Objects;
 
 /**
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/18 18:34
+ * @since 2022/5/18 15:34
  */
 @Data
 public class DataBaseInfo {

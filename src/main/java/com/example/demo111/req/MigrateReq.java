@@ -3,9 +3,9 @@ package com.example.demo111.req;
 import lombok.Data;
 
 /**
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/18 18:35
+ * @since 2022/5/18 15:35
  */
 @Data
 public class MigrateReq {
@@ -14,5 +14,8 @@ public class MigrateReq {
 
     private DataBaseInfo targetDataSource;
 
-    private String tableName;
+    /**
+     * 单次条数，默认50
+     */
+    private int size = 50;
 }

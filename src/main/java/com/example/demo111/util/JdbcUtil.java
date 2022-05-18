@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/18 18:30
+ * @since 2022/5/18 16:30
  */
 public class JdbcUtil {
 

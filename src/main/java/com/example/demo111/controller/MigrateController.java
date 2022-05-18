@@ -1,17 +1,16 @@
 package com.example.demo111.controller;
 
 import com.example.demo111.req.MigrateReq;
+import com.example.demo111.resp.MigrateInfoResp;
 import com.example.demo111.service.MigrateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/18 19:27
+ * @since 2022/5/18 16:27
  */
 @RequiredArgsConstructor
 @RequestMapping
@@ -20,8 +19,13 @@ public class MigrateController {
 
     private final MigrateService migrateService;
 
-    @PostMapping("migrate")
+    @PostMapping(value = "/migrate", produces = MediaType.APPLICATION_JSON_VALUE)
     public String migrate(@RequestBody MigrateReq req) {
-        return migrateService.migrate(req.getSourceDataSource(), req.getTargetDataSource());
+        return migrateService.migrate(req.getSourceDataSource(), req.getTargetDataSource(), req.getSize());
+    }
+
+    @GetMapping(value = "/info/{batchNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public MigrateInfoResp migrate(@PathVariable("batchNo") String batchNo) {
+        return migrateService.getByBatchNo(batchNo);
     }
 }

@@ -14,13 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * MockMigrateBatchTaskServiceImpl
  *
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/19 00:29
+ * @since 2022/5/18 16:29
  */
 @Service
 public class MockMigrateBatchTaskServiceImpl implements MigrateBatchTaskService {
 
+    // mock 数据库索引
     private final Map<String, MigrateBatchTask> sourceMockDBIndex = new ConcurrentHashMap<>();
     private final Map<String, MigrateBatchTask> targetMockDBIndex = new ConcurrentHashMap<>();
     private final Map<String, MigrateBatchTask> migrateBatchTableMockDB = new ConcurrentHashMap<>();
@@ -30,7 +31,7 @@ public class MockMigrateBatchTaskServiceImpl implements MigrateBatchTaskService 
         String sourceTableName = source.getTableName();
         String targetTableName = target.getTableName();
         if (sourceMockDBIndex.containsKey(sourceTableName) || targetMockDBIndex.containsKey(targetTableName)) {
-            throw new RuntimeException("该表已存在迁移任务");
+            return null;
         }
         int totalPage = count % size == 0 ? count / size : count / size + 1;
         // 创建批次任务
@@ -54,6 +55,15 @@ public class MockMigrateBatchTaskServiceImpl implements MigrateBatchTaskService 
 
         // 模拟新对象
         return BeanUtil.copyProperties(migrateBatchTask, MigrateBatchTask.class);
+    }
+
+    @Override
+    public MigrateBatchTask getByBatchNo(String batchNo) {
+        MigrateBatchTask task = migrateBatchTableMockDB.get(batchNo);
+        if (Objects.isNull(task)) {
+            return null;
+        }
+        return BeanUtil.copyProperties(task, MigrateBatchTask.class);
     }
 
     @Override

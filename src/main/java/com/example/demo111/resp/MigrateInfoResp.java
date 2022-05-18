@@ -1,16 +1,14 @@
-package com.example.demo111.dto;
+package com.example.demo111.resp;
 
-import com.example.demo111.req.DataBaseInfo;
 import lombok.Data;
 
 /**
  * @author zgl
  * @version v1.0
- * @since 2022/5/18 15:34
+ * @since 2022/5/18 16:53
  */
 @Data
-public class MigrateBatchTask {
-
+public class MigrateInfoResp {
     /**
      * 批次号
      */
@@ -70,8 +68,4 @@ public class MigrateBatchTask {
      * 失败原因
      */
     private String errorMessage;
-
-    private DataBaseInfo sourceDataSource;
-
-    private DataBaseInfo targetDataSource;
 }

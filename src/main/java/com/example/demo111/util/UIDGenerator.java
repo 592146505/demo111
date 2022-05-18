@@ -3,9 +3,9 @@ package com.example.demo111.util;
 import java.util.Random;
 
 /**
- * @author roamer
+ * @author zgl
  * @version v1.0
- * @since 2022/5/18 23:18
+ * @since 2022/5/18 16:18
  */
 public final class UIDGenerator {
 
