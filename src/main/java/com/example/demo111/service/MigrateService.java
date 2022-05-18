@@ -38,11 +38,11 @@ public class MigrateService {
         int size = 1;
         int totalPage = count % size == 0 ? count / size : count / size + 1;
         int page = 1;
-        int start = (page - 1) * size;
 
         // 分页查询
         List<Map<String, Object>> list = new ArrayList<>();
         do {
+            int start = (page - 1) * size;
             list = sourceJdbcTemplate.query("select * from " + tableName + " limit " + start + "," + size, (RowMapper<Map<String, Object>>) (rs, rowNum) -> {
                 Map<String, Object> map = new LinkedHashMap<>();
                 if (columns.isEmpty()) {
