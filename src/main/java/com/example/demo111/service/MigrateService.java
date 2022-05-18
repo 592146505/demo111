@@ -1,17 +1,19 @@
 package com.example.demo111.service;
 
 import com.example.demo111.req.DataBaseInfo;
-import com.example.demo111.req.MigrateReq;
 import com.example.demo111.util.JdbcUtil;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.*;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -33,8 +35,9 @@ public class MigrateService {
         }
 
         List<String> columns = new ArrayList<>();
-        int page = 1;
         int size = 200;
+        int totalPage = count % size == 0 ? count / size : count / size + 1;
+        int page = 1;
         int start = (page - 1) * 200;
 
         // 分页查询
@@ -99,8 +102,9 @@ public class MigrateService {
                 });
             }
 
+            ++page;
 
-        } while (list.size() == size);
+        } while (list.size() == size && page < totalPage);
         return count;
 
     }
