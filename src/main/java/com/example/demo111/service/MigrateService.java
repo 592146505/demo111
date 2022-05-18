@@ -35,7 +35,7 @@ public class MigrateService {
         }
 
         List<String> columns = new ArrayList<>();
-        int size = 200;
+        int size = 1;
         int totalPage = count % size == 0 ? count / size : count / size + 1;
         int page = 1;
         int start = (page - 1) * size;
@@ -104,7 +104,7 @@ public class MigrateService {
 
             ++page;
 
-        } while (list.size() == size && page < totalPage);
+        } while (list.size() == size && page <= totalPage);
         return count;
 
     }
