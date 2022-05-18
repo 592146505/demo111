@@ -25,6 +25,7 @@ java -server -jar demo111-0.0.1-SNAPSHOT.jar
 ### 迁移
 
 此接口只生成异步任务，返回任务批次号，通过定时任务(30秒运行一次)，完成迁移动作
+。**由于使用内存mock存储，故只针对应用单次运行期有效**
 
 - Path:/migrate
 - Method: POST
