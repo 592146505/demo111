@@ -38,7 +38,7 @@ public class MigrateService {
         int size = 200;
         int totalPage = count % size == 0 ? count / size : count / size + 1;
         int page = 1;
-        int start = (page - 1) * 200;
+        int start = (page - 1) * size;
 
         // 分页查询
         List<Map<String, Object>> list = new ArrayList<>();
